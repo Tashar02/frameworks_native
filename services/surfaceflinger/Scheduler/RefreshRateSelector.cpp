@@ -831,7 +831,8 @@ auto RefreshRateSelector::getRankedFrameRatesLocked(const std::vector<LayerRequi
             constexpr float kMaxScore = std::numeric_limits<float>::max();
             ranking.push_back(ScoredFrameRate{*noVoteBestMode, kMaxScore});
         } else {
-            ranking = rankFrameRates(anchorGroup, RefreshRateOrder::Descending);
+            // LMO Edit: If there are no layers, prefer to stay with the current config
+            ranking = rankFrameRates(anchorGroup, RefreshRateOrder::Ascending, activeMode.getId());
         }
         SFTRACE_FORMAT_INSTANT("%s (No layers with votes)",
                                to_string(ranking.front().frameRateMode.fps).c_str());
