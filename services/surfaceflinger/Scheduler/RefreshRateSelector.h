@@ -626,6 +626,7 @@ private:
     std::atomic<bool> mIdleTimerStarted = false;
 
     Fps mIdleFps = 60_Hz;
+    mutable bool mLocalIsIdle GUARDED_BY(mLock) = false;
 
     // Returns the range of supported frame rates.
     FpsRange getSupportedFrameRateRangeLocked() const REQUIRES(mLock);
