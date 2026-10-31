@@ -764,6 +764,7 @@ bool AHardwareBuffer_formatIsYuv(uint32_t format) {
         case AHARDWAREBUFFER_FORMAT_YCbCr_422_I:
         case AHARDWAREBUFFER_FORMAT_YCbCr_P010:
         case AHARDWAREBUFFER_FORMAT_YCbCr_P210:
+        case 0x7FA30C0A: // HAL_PIXEL_FORMAT_YCbCr_420_P010_VENUS
             return true;
         default:
             return false;
